@@ -66,4 +66,84 @@ int main() {
     return 0;
 }
 
+void registrarJuego(string titulos[], float horas[], int calificacion[], int &total) {
+    if (total >= 20) {
+        cout << "\nError: Limite de 20 juegos alcanzado. Memoria llena.\n";
+        return;
+    }
+    
+    cout << "\nIngrese el titulo del juego (Escribir todo junto, en forma CamelCase, Ej: SuperMario): ";
+    cin >> titulos[total]; 
+    
+    do {
+        cout << "Ingrese las horas jugadas (Ej. 2.5): ";
+        cin >> horas[total];
+        if (horas[total] < 0) {
+            cout << "Las horas no pueden ser negativas.\n";
+        }
+    } while (horas[total] < 0);
+    
+    bool calificacionValida;
+    do {
+        calificacionValida = true; 
+        
+        cout << "Ingrese la calificacion (1 al 10): ";
+        cin >> calificacion[total];
+        
+        if (calificacion[total] < 1) {
+            cout << "Error: La calificacion no puede ser menor a 1.\n";
+            calificacionValida = false; 
+        } else if (calificacion[total] > 10) {
+            cout << "Error: La calificacion no puede ser mayor a 10.\n";
+            calificacionValida = false; 
+        }
+        
+    } while (calificacionValida == false);
+    
+    total++; 
+    cout << "Juego registrado exitosamente.\n";
+}
+
+void mostrarJuegos(string titulos[], float horas[], int calificacion[], int total) {
+    if (total == 0) {
+        cout << "\nTu biblioteca esta vacia. ¡Registra algunos juegos primero!\n";
+        return;
+    }
+    
+    cout << "\n--- MI COLECCION ---\n";
+    for (int i = 0; i < total; i++) {
+        cout << i+1 << ". Titulo: " << titulos[i] 
+             << " | Horas: " << horas[i] 
+             << "h | Calificacion: " << calificacion[i] << "/10\n";
+    }
+}
+
+void buscarJuego(string titulos[], float horas[], int calificacion[], int total) {
+    if (total == 0) {
+        cout << "\nNo hay juegos para buscar.\n";
+        return;
+    }
+
+    string tituloBuscado;
+    cout << "\nIngrese el titulo del juego a buscar (todo junto sin espacios): ";
+    cin >> tituloBuscado; 
+
+    bool encontrado = false;
+    for (int i = 0; i < total; i++) {
+        if (titulos[i] == tituloBuscado) {
+            cout << "\n--- JUEGO ENCONTRADO ---\n";
+            cout << "Titulo: " << titulos[i] << "\n";
+            cout << "Horas jugadas: " << horas[i] << "h\n";
+            cout << "Calificacion: " << calificacion[i] << "/10\n";
+            encontrado = true;
+            break; 
+        }
+    }
+
+    if (encontrado == false) {
+        cout << "\nEl juego '" << tituloBuscado << "' no se encuentra en la biblioteca.\n";
+    }
+}
+
+
 
