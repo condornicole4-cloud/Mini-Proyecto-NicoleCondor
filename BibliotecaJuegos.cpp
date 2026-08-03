@@ -145,5 +145,52 @@ void buscarJuego(string titulos[], float horas[], int calificacion[], int total)
     }
 }
 
+void reporteGeneral(string titulos[], float horas[], int calificacion[], int total) {
+    if (total == 0) {
+        cout << "\nNo hay datos para generar el reporte.\n";
+        return;
+    }
 
+    float totalHoras = 0;
+    int maxCalificacion = calificacion[0];
+    string juegoTop = titulos[0];
+
+    for (int i = 0; i < total; i++) {
+        totalHoras += horas[i];
+        
+        if (calificacion[i] > maxCalificacion) {
+            maxCalificacion = calificacion[i];
+            juegoTop = titulos[i];
+        }
+    }
+
+    cout << "\n--- REPORTE GENERAL ---\n";
+    cout << "Total de horas jugadas en todos los juegos: " << totalHoras << "h\n";
+    cout << "Juego mejor calificado: " << juegoTop << " (" << maxCalificacion << "/10)\n";
+}
+
+void detectorDeJoyas(string titulos[], float horas[], int calificacion[], int total) {
+    if (total == 0) {
+        cout << "\nNo hay juegos registrados para analizar.\n";
+        return;
+    }
+
+    cout << "\n--- DETECTOR DE JOYAS ABANDONADAS ---\n";
+    cout << "Juegos excelentes (Calificacion >= 8) con poco tiempo de juego (< 5 horas):\n";
+    
+    bool joyaEncontrada = false;
+    for (int i = 0; i < total; i++) {
+        if (calificacion[i] >= 8) {
+            if (horas[i] < 5.0) {
+                cout << "- " << titulos[i] << " (Calificacion: " << calificacion[i] 
+                     << " | Horas: " << horas[i] << "h)\n";
+                joyaEncontrada = true;
+            }
+        }
+    }
+
+    if (joyaEncontrada == false) {
+        cout << "No tienes joyas abandonadas. ¡Le has dedicado buen tiempo a tus mejores juegos!\n";
+    }
+}
 
