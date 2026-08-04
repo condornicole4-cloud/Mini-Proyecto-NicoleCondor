@@ -1,3 +1,24 @@
+/*
+PROYECTO BIBLIOTECA DE VIDEOJUEGOS
+    Nombre: Nicole Condor
+    Fecha: 03/08/2026
+    
+Entrada:
+Opciones del menú principal (1 al 6)
+Títulos de los juegos, horas de juego y calificaciones
+Títulos ingresados específicamente para la búsqueda de juegos
+
+Proceso:
+El sistema evalúa qué opción eligió el usuario en el menú y restringe los errores
+Suma las horas acumuladas, identifica el valor máximo de calificación mediante comparaciones, y filtra el inventario aplicando condiciones lógicas combinadas
+
+Salida:
+Visualización del menú principal, alertas de error, y confirmaciones de éxito.
+Listado ordenado de toda la colección y visualización de la ficha de un juego específico buscado.
+Estadísticas globales (total de horas y juego top) y la lista de recomendaciones especiales./*
+
+
+
 #include <iostream>
 #include <string>
 
