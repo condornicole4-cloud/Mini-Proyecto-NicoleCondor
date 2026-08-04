@@ -15,7 +15,7 @@ Suma las horas acumuladas, identifica el valor máximo de calificación mediante
 Salida:
 Visualización del menú principal, alertas de error, y confirmaciones de éxito.
 Listado ordenado de toda la colección y visualización de la ficha de un juego específico buscado.
-Estadísticas globales (total de horas y juego top) y la lista de recomendaciones especiales./*
+Estadísticas globales (total de horas y juego top) y la lista de recomendaciones especiales.*/
 
 
 
